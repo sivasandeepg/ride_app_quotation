@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title> Ride – Project Quotation | Aventurine Tech Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1117;
+    --ink-soft: #3a3d4a;
+    --ink-mute: #7a7f8e;
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --accent: #1a3c5e;
+    --accent-light: #e8f0f8;
+    --gold: #c09b50;
+    --gold-light: #fdf6e9;
+    --green: #1a5c3a;
+    --green-light: #e8f5ee;
+    --red-light: #fef2f2;
+    --border: #e4e2dc;
+    --border-strong: #c8c5bc;
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 40px;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  .brand span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .meta-block { text-align: right; }
+  .meta-block .doc-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .meta-block .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 4px 0;
+  }
+  .meta-block .doc-info {
+    font-size: 12px;
+    color: var(--ink-mute);
+    line-height: 1.8;
+  }
+  .meta-block .doc-info strong {
+    color: var(--ink-soft);
+  }
+
+  /* ── PROJECT OVERVIEW ── */
+  .overview-card {
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .overview-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    grid-column: 1 / -1;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 4px;
+  }
+
+  .overview-card h2 span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .app-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .app-pill .app-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+
+  .app-pill .app-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .app-pill .app-tech {
+    font-size: 12px;
+    opacity: 0.65;
+    margin-top: 2px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 36px 0 16px;
+  }
+
+  .section-head .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 2px 7px;
+  }
+
+  .section-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .section-head .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: var(--ink);
+    color: #fff;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  th:first-child { border-radius: 6px 0 0 6px; }
+  th:last-child { border-radius: 0 6px 6px 0; }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:nth-child(even) td { background: #fafaf8; }
+
+  td.right, th.right { text-align: right; }
+
+  td strong { color: var(--ink); font-weight: 500; }
+
+  td .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .tag-high { background: #fdecea; color: #c0392b; }
+  .tag-med { background: #fef9e7; color: #b7770d; }
+  .tag-low { background: var(--green-light); color: var(--green); }
+  .tag-vh { background: #f0e8ff; color: #6c3fbc; }
+
+  /* ── COST CARDS ── */
+  .cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .cost-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+
+  .cost-card .cc-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .cost-card .cc-sub {
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .cost-card .cc-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .cost-card .cc-range {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  /* ── TOTAL SUMMARY ── */
+  .total-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 24px;
+  }
+
+  .total-table-wrap table th {
+    background: var(--ink);
+  }
+
+  .total-row {
+    background: var(--accent-light) !important;
+  }
+
+  .total-row td {
+    font-weight: 600;
+    color: var(--accent) !important;
+    font-size: 14px;
+    border-top: 2px solid var(--accent);
+    border-bottom: none;
+  }
+
+  /* ── TIER CARDS ── */
+  .tier-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .tier-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .tier-card.recommended {
+    border: 2px solid var(--accent);
+  }
+
+  .rec-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .tier-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+
+  .tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tier-price sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink-mute);
+    vertical-align: baseline;
+  }
+
+  .tier-desc {
+    font-size: 12px;
+    color: var(--ink-mute);
+    line-height: 1.6;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin-top: 8px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+
+  .tl-phase {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+  }
+
+  .tl-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .tl-dur {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 8px;
+    border-radius: 4px;
+    margin-top: 3px;
+  }
+
+  .tl-del {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  /* ── MONTHLY COSTS ── */
+  .monthly-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .monthly-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+
+  .monthly-card .mc-name {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+  }
+
+  .monthly-card .mc-amount {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── TERMS ── */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .term-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .term-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 4px;
+    padding: 1px 6px;
+    white-space: nowrap;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .term-text {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ── JUSTIFICATION BOX ── */
+  .justify-box {
+    background: var(--gold-light);
+    border: 1px solid #e8d09a;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+
+  .justify-box h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7a5c10;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .justify-box p {
+    font-size: 12px;
+    color: #7a6030;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .ft-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .footer .ft-brand span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  .validity {
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  .validity strong { color: var(--ink-soft); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 24px; }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      Aventurine Tech Solutions
+      <span>Technology Partner</span>
+    </div>
+    <div class="meta-block">
+      <div class="doc-label">Project Quotation</div>
+      <div class="doc-title"> Ride Platform</div>  
+      <div class="doc-info">
+        <strong>Date:</strong> 21 April 2026<br> 
+        <strong>Market:</strong> Nellore District, Andhra Pradesh
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="overview-card">
+    <h2>
+      <span>Project Overview</span>
+      Yuva Ride — Complete Ride-Hailing Platform (Code-Ready)
+    </h2>
+    <div class="app-pill">
+      <div class="app-num">01</div>
+      <div class="app-name">Backend API Server</div>
+      <div class="app-tech">Express.js (Node.js) · 90 DB Tables · 67 Modules</div>
+    </div>
+    <div class="app-pill">
+      <div class="app-num">02</div>
+      <div class="app-name">Admin Dashboard</div>
+      <div class="app-tech">Next.js 16 (React 19) · 62 Pages</div>
+    </div>
+    <div class="app-pill">
+      <div class="app-num">03</div>
+      <div class="app-name">Driver App</div>
+      <div class="app-tech">Android & iOS · 238 Source Files · 59+ Screens</div>
+    </div>
+    <div class="app-pill">
+      <div class="app-num">04</div>
+      <div class="app-name">Customer App</div>
+      <div class="app-tech">Android & iOS · 176 Source Files · 64 Screens</div>
+    </div>
+  </div>
+
+  <!-- SERVICES OFFERED -->
+  <div class="section-head">
+    <span class="num">★</span>
+    <h3>Services Offered on the Platform</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:16px;"> 
+    <p style="color:var(--ink-soft);margin-bottom:18px;font-size:13.5px;">
+      The platform is a <strong>multi-service mobility solution</strong> — not just a taxi app. A single customer app and a single driver app (with a dual-mode Captain + Carpool module) power three distinct service lines:
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+
+      <div style="border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;background:var(--accent-light);">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Service 01</div>
+        <div style="font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px;">🚕 Taxi Ride (People)</div>
+        <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.55;">On-demand point-to-point passenger rides. Customer books, nearest driver accepts, live tracking, fare calculation, cashless or cash payment.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px;background:var(--gold-light);">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Service 02</div>
+        <div style="font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px;">📦 Parcel Delivery</div>
+        <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.55;">Send packages / documents across the city. Sender & receiver details, package type, proof of delivery, same driver network as taxi.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-left:4px solid var(--green);border-radius:10px;padding:14px 16px;background:var(--green-light);grid-column:1 / -1;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">Service 03 — Signature Feature</div>
+        <div style="font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px;">🚗 Ride Pooling / Car Sharing (Go-Home Mode)</div>
+        <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.55;">
+          A car owner travelling to another city or on a daily route can <strong>publish their journey</strong> (source, destination, date, seats, fare). Other customers travelling on the <strong>same route</strong> can request to join — the system matches overlapping routes automatically, splits fuel cost, and the car owner earns while travelling. Both the driver app's <strong>Carpool module</strong> and the customer's <strong>Ride Sharing booking flow</strong> power this feature.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 1: BACKEND -->
+  <div class="section-head">
+    <span class="num">01</span>
+    <h3>Backend API Server</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;"> 
+    <table>
+      <thead><tr>
+        <th>Module Group</th>
+        <th>Key Features</th>
+        <th class="right">Complexity</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Core Ride Engine</strong></td><td>Ride matching (Redis GEO), fare calculation (distance slabs, surge, night, weather), pooling, bidding, parcel, cancellation engine, waiting charges, multi-stop, Go-Home</td><td class="right"><span class="tag tag-vh">Very High</span></td></tr>
+        <tr><td><strong>User Management</strong></td><td>Driver KYC onboarding (DL, Aadhaar, RC, Insurance, Bank), document verification, customer management, RBAC with granular permissions, role templates</td><td class="right"><span class="tag tag-high">High</span></td></tr>
+        <tr><td><strong>Financial System</strong></td><td>Wallet (top-up, refund, deduction), Razorpay (orders, webhooks), commission engine, platform fee, driver withdrawals, admin ledger, earning reports, GST calculation</td><td class="right"><span class="tag tag-vh">Very High</span></td></tr>
+        <tr><td><strong>Engagement & Retention</strong></td><td>Driver subscriptions, performance incentives, earn coins, reward coins, referral program, coupon management</td><td class="right"><span class="tag tag-high">High</span></td></tr>
+        <tr><td><strong>Communication & Safety</strong></td><td>Real-time chat (Socket.IO), FCM push (multi-language), Fast2SMS OTP/DLT, email invoices (Nodemailer/PDF), SOS emergency, support ticketing</td><td class="right"><span class="tag tag-high">High</span></td></tr>
+        <tr><td><strong>Content & Config</strong></td><td>Zone management (polygon), vehicle catalog, banners, driver training modules, general settings, FAQ & legal pages</td><td class="right"><span class="tag tag-med">Medium</span></td></tr>
+        <tr><td><strong>Infrastructure & Security</strong></td><td>Redis rate limiting, Helmet security headers, audit logging, cron jobs (subscription expiry, incentive auto-pay, location sync, ride cleanup), Winston logging</td><td class="right"><span class="tag tag-high">High</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:8px;">
+    <table>
+      <thead><tr><th>Technology Stack</th><th>Component</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Framework</strong></td><td>Express.js 5 (Node.js)</td></tr>
+        <tr><td><strong>Database</strong></td><td>PostgreSQL · Prisma ORM · 90 Tables</td></tr>
+        <tr><td><strong>Real-Time</strong></td><td>Socket.IO + Redis Adapter</td></tr>
+        <tr><td><strong>Caching & Geo</strong></td><td>Redis (IORedis) + GEO commands</td></tr>
+        <tr><td><strong>Auth</strong></td><td>JWT RS256 (asymmetric key signing)</td></tr>
+        <tr><td><strong>Storage</strong></td><td>AWS S3 + pre-signed URLs</td></tr>
+        <tr><td><strong>CI/CD</strong></td><td>GitHub Actions → AWS EC2 auto-deploy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: ADMIN DASHBOARD -->
+  <div class="section-head">
+    <span class="num">02</span>
+    <h3>Admin Dashboard (Next.js · 62 Pages)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
+    <table>
+      <thead><tr><th>Module</th><th>Pages</th><th>Key Features</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dashboard & Analytics</strong></td><td>1</td><td>Real-time KPIs, dual-axis revenue chart, top drivers, zone performance, SOS & ticket alerts</td></tr>
+        <tr><td><strong>Driver Management</strong></td><td>7</td><td>List, create, detail, edit, documents, unapproved, incomplete, cancel analytics</td></tr>
+        <tr><td><strong>Customer Management</strong></td><td>2</td><td>List, detail, block/unblock, search, filter</td></tr>
+        <tr><td><strong>Ride Management</strong></td><td>5</td><td>All rides, ride detail, live rides, live map tracking</td></tr>
+        <tr><td><strong>Vehicle & Zone Management</strong></td><td>8</td><td>Vehicle types, categories; Zone polygon drawing, pricing matrix, heatmap, live map</td></tr>
+        <tr><td><strong>Financial Modules</strong></td><td>5</td><td>Earnings dashboard, admin ledger, withdrawals, 10-tab reports (revenue, commission, payout, surge, carpool, etc.)</td></tr>
+        <tr><td><strong>Promotions & Engagement</strong></td><td>10</td><td>Subscriptions, coupons, incentives, earn coins, reward coins, driver referrals</td></tr>
+        <tr><td><strong>Content & Communications</strong></td><td>6</td><td>Banners, FAQs, notifications (with audience targeting), support ticket management (real-time Socket.IO)</td></tr>
+        <tr><td><strong>Config & Security</strong></td><td>8</td><td>GST/dynamic charges, cancellation policy, global settings, RBAC roles, SOS monitoring, training, public tracking</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: DRIVER APP -->
+  <div class="section-head">
+    <span class="num">03</span>
+    <h3>Driver App — Android & iOS (238 Files · 59+ Screens)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
+    <table>
+      <thead><tr><th>Module</th><th>Screens</th><th>Key Features</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Authentication & KYC</strong></td><td>6</td><td>Phone OTP login, multi-step signup, document hub (Aadhaar, DL, RC, Insurance, Pollution, Bank), real-time status with rejection reasons</td></tr>
+        <tr><td><strong>Captain Module (Ride-Hailing)</strong></td><td>15+</td><td>Live ride requests via Socket.IO, swipeable booking cards, OTP pickup, turn-by-turn navigation, live GPS, waiting charge tracker, parcel photo capture, QR payment, earnings summary</td></tr>
+        <tr><td><strong>Ride Sharing Module (Carpool)</strong></td><td>12+</td><td>Publish long-distance trips, multi-stop routes, recurring schedules, cost per passenger, request management, group chat, OTP verification</td></tr>
+        <tr><td><strong>Earnings & Wallet</strong></td><td>6</td><td>Daily/weekly/monthly dashboard, per-ride fare breakdown, wallet balance, Razorpay top-up, bank withdrawal requests, payout history</td></tr>
+        <tr><td><strong>Subscriptions</strong></td><td>3</td><td>Plan listing with benefits, Razorpay subscription payment, expiry blocking screen</td></tr>
+        <tr><td><strong>Engagement</strong></td><td>6</td><td>Incentive targets with progress tracking, referral program & commission history, driver training (YouTube embed), Go-Home route optimization</td></tr>
+        <tr><td><strong>Communication & Support</strong></td><td>5</td><td>In-ride chat, support ticketing with categories, support team chat, notification feed, FAQ & help</td></tr>
+        <tr><td><strong>Profile & Settings</strong></td><td>6</td><td>Personal details, document viewer, language selection, permissions, privacy & terms</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: CUSTOMER APP -->
+  <div class="section-head">
+    <span class="num">04</span>
+    <h3>Customer App — Android & iOS (176 Files · 64 Screens)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
+    <table>
+      <thead><tr><th>Module</th><th>Screens</th><th>Key Features</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Authentication</strong></td><td>3</td><td>Phone OTP, email signup, referral code on registration</td></tr>
+        <tr><td><strong>Multi-Service Booking</strong></td><td>15+</td><td>Taxi, Ride Sharing/Pooling, Parcel Delivery, vehicle selection, fare estimate, coupon, payment selection, book for self/others</td></tr>
+        <tr><td><strong>Real-Time Tracking</strong></td><td>Integrated</td><td>Live driver location (Socket.IO), ETA refresh every 30s, route polylines, driver arrival alert (300m), active ride polling every 4s</td></tr>
+        <tr><td><strong>Location Features</strong></td><td>–</td><td>Google Maps custom styling, Places autocomplete, recent & saved places, popular destinations, speech-to-text input</td></tr>
+        <tr><td><strong>Payment System</strong></td><td>3</td><td>Wallet (Razorpay top-up), Razorpay (card/UPI/netbanking), Cash; mid-ride switching; invoice email (PDF)</td></tr>
+        <tr><td><strong>Ride History & Reviews</strong></td><td>3</td><td>All past rides (taxi, parcel, ride-sharing), fare breakdown, route polyline, PDF invoice, 5-star rating</td></tr>
+        <tr><td><strong>Safety Features</strong></td><td>Integrated</td><td>SOS emergency button, trip link sharing, real-time location share, false alarm cancel</td></tr>
+        <tr><td><strong>Referral & Rewards</strong></td><td>1</td><td>Unique referral code, coin rewards, WhatsApp/SMS/social sharing, expiry tracking</td></tr>
+        <tr><td><strong>Communication & Support</strong></td><td>6</td><td>In-ride chat, support categories, ride-linked tickets, real-time agent chat, ticket rating</td></tr>
+        <tr><td><strong>Profile & Settings</strong></td><td>5+</td><td>Profile management, wallet & transactions, notification feed, language selection, FAQ & legal</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 5: INTEGRATIONS -->
+  <div class="section-head">
+    <span class="num">05</span>
+    <h3>Third-Party Integrations</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:8px;">
+    <table>
+      <thead><tr><th>Service</th><th>Provider</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Payment Gateway</strong></td><td>Razorpay</td><td>Ride payments, wallet top-up, webhook verification, order flow</td></tr>
+        <tr><td><strong>Maps & Navigation</strong></td><td>Google Maps API</td><td>Distance Matrix, Place Autocomplete, Reverse Geocoding, Navigation SDK, Heatmaps, Polygon Zones</td></tr>
+        <tr><td><strong>SMS & OTP</strong></td><td>Fast2SMS</td><td>DLT-compliant OTP delivery, bulk SMS campaigns</td></tr>
+        <tr><td><strong>Push Notifications</strong></td><td>Firebase (FCM)</td><td>Dual Firebase projects (driver + customer), multi-language templates, high-priority ride alerts</td></tr>
+        <tr><td><strong>Cloud Storage</strong></td><td>AWS S3</td><td>Document uploads, profile photos, banners (pre-signed URLs)</td></tr>
+        <tr><td><strong>Email</strong></td><td>Nodemailer SMTP</td><td>Invoices, receipts, PDF attachments</td></tr>
+        <tr><td><strong>Real-Time Engine</strong></td><td>Socket.IO + Redis</td><td>Live tracking, chat, bidding, ride status updates, pub/sub</td></tr>
+        <tr><td><strong>Weather API</strong></td><td>Weather Service</td><td>Condition-based surge pricing adjustments</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 6: INFRASTRUCTURE -->
+  <div class="section-head">
+    <span class="num">06</span>
+    <h3>Infrastructure & DevOps</h3>
+    <div class="line"></div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:8px;">
+    <table>
+      <thead><tr><th>Component</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Server</strong></td><td>AWS EC2 (Ubuntu Linux)</td></tr>
+        <tr><td><strong>Process Manager</strong></td><td>PM2 cluster mode (multi-worker, 500MB limit)</td></tr>
+        <tr><td><strong>Reverse Proxy</strong></td><td>Nginx with HTTPS / SSL termination</td></tr>
+        <tr><td><strong>CI/CD</strong></td><td>GitHub Actions (auto-deploy on push to main)</td></tr>
+        <tr><td><strong>Database</strong></td><td>PostgreSQL + Prisma ORM migrations + connection pooling</td></tr>
+        <tr><td><strong>Cache</strong></td><td>Redis (geospatial + pub/sub + rate limiting)</td></tr>
+        <tr><td><strong>File Storage</strong></td><td>AWS S3 (ap-south-1 region)</td></tr>
+        <tr><td><strong>Monitoring</strong></td><td>PM2 monitor + Winston daily-rotated logs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 7: COST BREAKDOWN -->
+  <div class="section-head">
+    <span class="num">07</span>
+    <h3>Cost Estimation — Startup Pricing</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="justify-box" style="margin-bottom:14px;">
+    <h4>📍 Regional Startup Pricing Rationale</h4>
+    <p>This quotation applies startup-friendly rates suitable for an initial launch in a limited geographic area (Nellore District, AP). All features remain fully intact as per the developed codebase. Pricing reflects the deployment, customisation, configuration, testing, and delivery of the complete production-ready platform — not a reduced-scope build.</p>
+  </div>
+
+  <div class="cost-grid">
+    <div class="cost-card">
+      <div class="cc-label">Backend API Server</div>
+      <div class="cc-amount">₹4,90,000</div>
+      <div class="cc-range">1,800–2,200 hrs · 90 tables · 67 modules</div>
+      <div class="cc-sub">Core ride engine, financial system, real-time engine, RBAC, cron jobs, security</div>
+    </div>
+    <div class="cost-card">
+      <div class="cc-label">Admin Dashboard</div>
+      <div class="cc-amount">₹1,20,000</div>
+      <div class="cc-range">1,200–1,500 hrs · 62 pages</div>
+      <div class="cc-sub">Real-time KPIs, live map, 10-report types, RBAC UI, Socket.IO updates</div>
+    </div>
+    <div class="cost-card">
+      <div class="cc-label">Driver App (Android + iOS)</div>
+      <div class="cc-amount">₹3,80,000</div>
+      <div class="cc-range">1,600–2,000 hrs · 238 files · 59+ screens</div>
+      <div class="cc-sub">Dual module (Captain + Carpool), navigation, KYC, earnings, training, referral</div>
+    </div>
+    <div class="cost-card">
+      <div class="cc-label">Customer App (Android + iOS)</div>
+      <div class="cc-amount">₹3,20,000</div>
+      <div class="cc-range">1,200–1,500 hrs · 176 files · 64 screens</div>
+      <div class="cc-sub">Multi-service booking, real-time tracking, Razorpay, SOS, referral, PDF invoice</div>
+    </div>
+  </div>
+
+  <!-- Integrations mini-table -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+    <table>
+      <thead><tr>
+        <th>Third-Party Integrations</th>
+        <th class="right">Amount (INR)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Google Maps API (Maps, Places, Distance Matrix, Navigation)</td><td class="right">₹32,000</td></tr>
+        <tr><td>Socket.IO + Redis (real-time engine, geospatial, pub/sub)</td><td class="right">₹30,000</td></tr>
+        <tr><td>Razorpay Payment Gateway (webhooks, order flow, verification)</td><td class="right">₹18,000</td></tr>
+        <tr><td>Firebase Cloud Messaging (dual projects, multi-language)</td><td class="right">₹12,000</td></tr>
+        <tr><td>AWS S3 (pre-signed URLs, bucket policies)</td><td class="right">₹8,000</td></tr>
+        <tr><td>Fast2SMS (DLT registration, OTP, bulk SMS)</td><td class="right">₹5,000</td></tr>
+        <tr><td>Email Service (SMTP, PDF invoices, templates)</td><td class="right">₹5,000</td></tr>
+        <tr class="total-row"><td><strong>Subtotal</strong></td><td class="right"><strong>₹1,10,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Infrastructure mini-table -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+    <table>
+      <thead><tr>
+        <th>Infrastructure &amp; DevOps</th>
+        <th class="right">Amount (INR)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>AWS EC2 + Nginx + PM2 cluster setup</td><td class="right">₹10,000</td></tr>
+        <tr><td>GitHub Actions CI/CD pipeline</td><td class="right">₹6,000</td></tr>
+        <tr><td>PostgreSQL + Prisma migrations setup</td><td class="right">₹5,000</td></tr>
+        <tr><td>Redis setup (cache + pub/sub)</td><td class="right">₹5,000</td></tr>
+        <tr><td>SSL / HTTPS / Domain configuration</td><td class="right">₹4,000</td></tr>
+        <tr class="total-row"><td><strong>Subtotal</strong></td><td class="right"><strong>₹30,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Testing mini-table -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
+    <table>
+      <thead><tr>
+        <th>Testing &amp; QA</th>
+        <th class="right">Amount (INR)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Backend API testing</td><td class="right">₹17,000</td></tr>
+        <tr><td>Driver app testing (Android + iOS)</td><td class="right">₹10,000</td></tr>
+        <tr><td>Customer app testing (Android + iOS)</td><td class="right">₹9,000</td></tr>
+        <tr><td>Admin panel testing</td><td class="right">₹7,000</td></tr>
+        <tr><td>End-to-end integration testing</td><td class="right">₹7,000</td></tr>
+        <tr class="total-row"><td><strong>Subtotal</strong></td><td class="right"><strong>₹50,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TOTAL SUMMARY TABLE -->
+  <div class="section-head" style="margin-top:32px;">
+    <span class="num">08</span>
+    <h3>Total Project Cost Summary</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="total-table-wrap">
+    <table>
+      <thead><tr>
+        <th>Component</th>
+        <th class="right">Amount (INR)</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Backend API Server (Express.js)</strong></td><td class="right">₹4,90,000</td></tr>
+        <tr><td><strong>Admin Dashboard (Next.js · 62 pages)</strong></td><td class="right">₹1,20,000</td></tr>
+        <tr><td><strong>Driver App (Android & iOS)</strong></td><td class="right">₹3,80,000</td></tr>
+        <tr><td><strong>Customer App (Android & iOS)</strong></td><td class="right">₹3,20,000</td></tr>
+        <tr><td><strong>Third-Party Integrations</strong></td><td class="right">₹1,10,000</td></tr>
+        <tr><td><strong>Infrastructure & DevOps</strong></td><td class="right">₹30,000</td></tr>
+        <tr><td><strong>Testing & QA</strong></td><td class="right">₹50,000</td></tr>
+        <tr class="total-row">
+          <td><strong>Total Development Cost</strong></td>
+          <td class="right"><strong>₹15,00,000</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIER RECOMMENDATION -->
+  <div class="tier-wrap">
+
+    <div class="tier-card recommended"> 
+      <div class="tier-name">Total</div> 
+      <div class="tier-price">₹15 <sub>Lakhs</sub></div> 
+    </div>
+  </div>
+   
+  <!-- SECTION 9: TIMELINE -->
+  
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="ft-brand">Aventurine Tech Solutions<span>Building Technology, Delivering Solutions</span></div>
+    </div>
+    <div class="validity"> 
+      <span style="color:var(--ink-mute);">21 April 2026</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
