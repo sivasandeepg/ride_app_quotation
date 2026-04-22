@@ -588,11 +588,11 @@
     </div>
   </div>
 
-  <!-- OVERVIEW -->
+  <!-- OVERVIEW --> 
   <div class="overview-card">
     <h2>
       <span>Project Overview</span>
-       Ride — Complete Ride-Hailing Platform
+      Ride — Complete Ride-Hailing Platform (Built from Scratch)
     </h2>
     <div class="app-pill">
       <div class="app-num">01</div>
@@ -725,18 +725,35 @@
     <div class="line"></div>
   </div>
 
+  <!-- Driver App: Technical Architecture -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:10px;">
+    <table>
+      <thead><tr><th colspan="2">🏗️ App Architecture & Engineering</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Framework</strong></td><td>Cross-platform framework (Flutter or React Native) — single codebase compiled to native Android & iOS builds · final choice confirmed at project kick-off</td></tr>
+        <tr><td><strong>Architecture Pattern</strong></td><td>MVVM (Model–View–ViewModel) with a robust state-management layer, Repository pattern for data abstraction, Singleton services for Socket.IO & API clients</td></tr>
+        <tr><td><strong>Dual-Module System</strong></td><td>Two independent feature modules inside one app — <strong>Captain Module</strong> (ride-hailing, 5-tab nav, 32+ screens) and <strong>Ride Sharing Module</strong> (carpool, 4-tab nav, 27+ screens)</td></tr>
+        <tr><td><strong>Real-Time Layer</strong></td><td>Persistent Socket.IO connection with auto-reconnect, connection-state-aware UI, event-driven ride updates, background location push to server</td></tr>
+        <tr><td><strong>Location Engine</strong></td><td>High-accuracy GPS tracking, background location service, 4-second throttled push, foreground service on Android, geofencing for arrival detection</td></tr>
+        <tr><td><strong>Navigation</strong></td><td>Google Navigation SDK (turn-by-turn) · Places SDK (autocomplete) · custom polyline rendering · route deviation detection</td></tr>
+        <tr><td><strong>Offline Handling</strong></td><td>Cached ride data, queued API calls on reconnect, graceful degradation when network drops mid-ride</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Driver App: Modules -->
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
     <table>
-      <thead><tr><th>Module</th><th>Screens</th><th>Key Features</th></tr></thead>
+      <thead><tr><th>Module</th><th>Screens</th><th>Key Features & Technical Depth</th></tr></thead>
       <tbody>
-        <tr><td><strong>Authentication & KYC</strong></td><td>6</td><td>Phone OTP login, multi-step signup, document hub (Aadhaar, DL, RC, Insurance, Pollution, Bank), real-time status with rejection reasons</td></tr>
-        <tr><td><strong>Captain Module (Ride-Hailing)</strong></td><td>15+</td><td>Live ride requests via Socket.IO, swipeable booking cards, OTP pickup, turn-by-turn navigation, live GPS, waiting charge tracker, parcel photo capture, QR payment, earnings summary</td></tr>
-        <tr><td><strong>Ride Sharing Module (Carpool)</strong></td><td>12+</td><td>Publish long-distance trips, multi-stop routes, recurring schedules, cost per passenger, request management, group chat, OTP verification</td></tr>
-        <tr><td><strong>Earnings & Wallet</strong></td><td>6</td><td>Daily/weekly/monthly dashboard, per-ride fare breakdown, wallet balance, Razorpay top-up, bank withdrawal requests, payout history</td></tr>
-        <tr><td><strong>Subscriptions</strong></td><td>3</td><td>Plan listing with benefits, Razorpay subscription payment, expiry blocking screen</td></tr>
-        <tr><td><strong>Engagement</strong></td><td>6</td><td>Incentive targets with progress tracking, referral program & commission history, driver training (YouTube embed), Go-Home route optimization</td></tr>
-        <tr><td><strong>Communication & Support</strong></td><td>5</td><td>In-ride chat, support ticketing with categories, support team chat, notification feed, FAQ & help</td></tr>
-        <tr><td><strong>Profile & Settings</strong></td><td>6</td><td>Personal details, document viewer, language selection, permissions, privacy & terms</td></tr>
+        <tr><td><strong>Authentication & KYC</strong></td><td>6</td><td>Phone OTP login (Fast2SMS DLT-compliant), JWT RS256 token handling, multi-step signup, 3-step document hub (Aadhaar, DL, RC, Insurance, Pollution, Bank), AWS S3 direct upload with pre-signed URLs, real-time status tracking with admin rejection reasons, auto-retry on verification failure</td></tr>
+        <tr><td><strong>Captain Module (Ride-Hailing)</strong></td><td>15+</td><td>Real-time ride requests via Socket.IO with priority sound alerts, swipeable booking cards, OTP pickup verification, Google Navigation SDK integration with live rerouting, waiting-time calculator with configurable thresholds, photo capture at pickup/delivery (parcel), QR code payment verification, cash/digital payment confirmation, ride completion summary with fare breakdown (base + distance + time + charges − deductions − commission)</td></tr>
+        <tr><td><strong>Ride Sharing Module (Carpool)</strong></td><td>12+</td><td>Publish long-distance trips with intermediate stops, recurring trip scheduler, per-passenger cost configuration, passenger request accept/reject flow, group chat via Socket.IO for all trip participants, per-passenger OTP verification, multi-stop route optimization</td></tr>
+        <tr><td><strong>Earnings & Wallet</strong></td><td>6</td><td>Real-time earnings dashboard (daily/weekly/monthly aggregates), per-ride fare breakdown (base fare, charges, taxes, deductions, commission, final earning), wallet balance with transaction ledger, Razorpay top-up with webhook verification, bank withdrawal requests with admin approval workflow, payout transaction history</td></tr>
+        <tr><td><strong>Subscriptions</strong></td><td>3</td><td>Plan listing with benefit comparison, Razorpay subscription payment with order flow, expiry handling with blocking screen, auto-renewal logic</td></tr>
+        <tr><td><strong>Engagement</strong></td><td>6</td><td>Daily/weekly/monthly incentive targets with real-time progress tracking, referral program with milestone rewards and commission history, driver training module with YouTube video embedding and completion tracking, Go-Home feature with route optimization toward home location</td></tr>
+        <tr><td><strong>Communication & Support</strong></td><td>5</td><td>Real-time in-ride chat via Socket.IO, category-based support ticketing, ride-linked tickets, real-time chat with support agents, push notification feed with FCM, FAQ & help documentation</td></tr>
+        <tr><td><strong>Profile & Settings</strong></td><td>6</td><td>Personal details management, document viewer, multi-language selection (English/Hindi/Telugu-ready), permission management, privacy & terms</td></tr>
       </tbody>
     </table>
   </div>
@@ -748,20 +765,37 @@
     <div class="line"></div>
   </div>
 
+  <!-- Customer App: Technical Architecture -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:10px;">
+    <table>
+      <thead><tr><th colspan="2">🏗️ App Architecture & Engineering</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Framework</strong></td><td>Cross-platform framework (Flutter or React Native) — single codebase compiled to native Android & iOS builds · final choice confirmed at project kick-off</td></tr>
+        <tr><td><strong>Architecture Pattern</strong></td><td>MVVM with a robust state-management layer, Repository pattern, Singleton Socket.IO & API services, modular routing across 64 screens</td></tr>
+        <tr><td><strong>Multi-Service Engine</strong></td><td>3 service types from one unified booking flow — Taxi, Ride Sharing/Pooling, Parcel Delivery — each with its own pricing model, flow variations, and vehicle categories</td></tr>
+        <tr><td><strong>Real-Time Layer</strong></td><td>Persistent Socket.IO connection, live driver location stream (every 4s), dynamic ETA calculation (refreshed every 30s), driver-arrival geofence notification (300m proximity), active ride polling as safety net</td></tr>
+        <tr><td><strong>Map Engine</strong></td><td>Google Maps with custom styling, Places SDK for autocomplete, reverse geocoding, multi-stop route polyline rendering, saved/favorite places, recent locations, speech-to-text voice search</td></tr>
+        <tr><td><strong>Payment Engine</strong></td><td>3-method system (Wallet · Razorpay · Cash), mid-ride payment method switching, Razorpay checkout with webhook verification, wallet top-up flow, on-device PDF invoice generation & email delivery</td></tr>
+        <tr><td><strong>Safety Engine</strong></td><td>One-tap SOS with instant emergency contact alerting, live trip-link sharing, real-time location share with trusted contacts, false-alarm cancellation window</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Customer App: Modules -->
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px;">
     <table>
-      <thead><tr><th>Module</th><th>Screens</th><th>Key Features</th></tr></thead>
+      <thead><tr><th>Module</th><th>Screens</th><th>Key Features & Technical Depth</th></tr></thead>
       <tbody>
-        <tr><td><strong>Authentication</strong></td><td>3</td><td>Phone OTP, email signup, referral code on registration</td></tr>
-        <tr><td><strong>Multi-Service Booking</strong></td><td>15+</td><td>Taxi, Ride Sharing/Pooling, Parcel Delivery, vehicle selection, fare estimate, coupon, payment selection, book for self/others</td></tr>
-        <tr><td><strong>Real-Time Tracking</strong></td><td>Integrated</td><td>Live driver location (Socket.IO), ETA refresh every 30s, route polylines, driver arrival alert (300m), active ride polling every 4s</td></tr>
-        <tr><td><strong>Location Features</strong></td><td>–</td><td>Google Maps custom styling, Places autocomplete, recent & saved places, popular destinations, speech-to-text input</td></tr>
-        <tr><td><strong>Payment System</strong></td><td>3</td><td>Wallet (Razorpay top-up), Razorpay (card/UPI/netbanking), Cash; mid-ride switching; invoice email (PDF)</td></tr>
-        <tr><td><strong>Ride History & Reviews</strong></td><td>3</td><td>All past rides (taxi, parcel, ride-sharing), fare breakdown, route polyline, PDF invoice, 5-star rating</td></tr>
-        <tr><td><strong>Safety Features</strong></td><td>Integrated</td><td>SOS emergency button, trip link sharing, real-time location share, false alarm cancel</td></tr>
-        <tr><td><strong>Referral & Rewards</strong></td><td>1</td><td>Unique referral code, coin rewards, WhatsApp/SMS/social sharing, expiry tracking</td></tr>
-        <tr><td><strong>Communication & Support</strong></td><td>6</td><td>In-ride chat, support categories, ride-linked tickets, real-time agent chat, ticket rating</td></tr>
-        <tr><td><strong>Profile & Settings</strong></td><td>5+</td><td>Profile management, wallet & transactions, notification feed, language selection, FAQ & legal</td></tr>
+        <tr><td><strong>Authentication</strong></td><td>3</td><td>Phone OTP via Fast2SMS (DLT-compliant), email signup with profile creation, referral code application during registration, JWT RS256 token management with auto-refresh</td></tr>
+        <tr><td><strong>Multi-Service Booking</strong></td><td>15+</td><td>Unified booking flow for Taxi, Ride Sharing/Pooling, Parcel Delivery; pickup via map tap / search / current location / favorites; multi-stop drop-off support; vehicle selection with fare estimate; coupon/offer application with real-time recalculation; wallet / Razorpay / cash payment selection; "book for self or others" with alternate contact; real-time driver matching via Socket.IO</td></tr>
+        <tr><td><strong>Real-Time Tracking</strong></td><td>Integrated</td><td>Live driver location updates via Socket.IO, dynamic ETA refresh every 30 seconds, Google Maps route polyline visualization, driver-arrival notification at 300m geofence, 4-second active ride polling as safety fallback, stage-aware UI (searching → accepted → arriving → started → completed)</td></tr>
+        <tr><td><strong>Location Features</strong></td><td>–</td><td>Google Maps with custom styling, Places SDK autocomplete, recent pickup/drop history, popular destination suggestions, saved/favorite places management, speech-to-text voice-based location input</td></tr>
+        <tr><td><strong>Payment System</strong></td><td>3</td><td>Wallet (pre-loaded balance with Razorpay top-up and transaction ledger), Razorpay online (credit/debit cards, UPI, net banking) with webhook verification, cash direct-to-driver, mid-ride payment switching, on-device PDF invoice generation, invoice email delivery via SMTP</td></tr>
+        <tr><td><strong>Ride History & Reviews</strong></td><td>3</td><td>All past rides filtered by service type (taxi, parcel, ride-sharing) and status (upcoming, completed, cancelled), detailed fare breakdown, route polyline replay, PDF invoice download, 5-star rating with text review submission</td></tr>
+        <tr><td><strong>Safety Features</strong></td><td>Integrated</td><td>One-tap SOS emergency button with instant admin alert, real-time location broadcast to emergency contacts, trip-link sharing with live tracking, false-alarm cancel within grace window</td></tr>
+        <tr><td><strong>Referral & Rewards</strong></td><td>1</td><td>Unique per-user referral code, referrer & referee coin reward mechanics, WhatsApp / SMS / social media share integration, coin expiry tracking with countdown</td></tr>
+        <tr><td><strong>Communication & Support</strong></td><td>6</td><td>Real-time in-ride chat with driver via Socket.IO, chat history per ride, category-based support browsing, ride-linked support ticket creation, real-time chat with support agents, ticket status tracking with rating submission</td></tr>
+        <tr><td><strong>Profile & Settings</strong></td><td>5+</td><td>Profile management (name, email, profile photo via camera/gallery), wallet & complete transaction history, notification feed with FCM, multi-language selection, FAQ / help / terms / privacy pages</td></tr>
       </tbody>
     </table>
   </div>
@@ -800,14 +834,15 @@
     <table>
       <thead><tr><th>Component</th><th>Details</th></tr></thead>
       <tbody>
-        <tr><td><strong>Server</strong></td><td>AWS EC2 (Ubuntu Linux)</td></tr>
-        <tr><td><strong>Process Manager</strong></td><td>PM2 cluster mode (multi-worker, 500MB limit)</td></tr>
-        <tr><td><strong>Reverse Proxy</strong></td><td>Nginx with HTTPS / SSL termination</td></tr>
-        <tr><td><strong>CI/CD</strong></td><td>GitHub Actions (auto-deploy on push to main)</td></tr>
-        <tr><td><strong>Database</strong></td><td>PostgreSQL + Prisma ORM migrations + connection pooling</td></tr>
-        <tr><td><strong>Cache</strong></td><td>Redis (geospatial + pub/sub + rate limiting)</td></tr>
-        <tr><td><strong>File Storage</strong></td><td>AWS S3 (ap-south-1 region)</td></tr>
-        <tr><td><strong>Monitoring</strong></td><td>PM2 monitor + Winston daily-rotated logs</td></tr>
+        <tr><td><strong>Server</strong></td><td>AWS EC2 (Ubuntu Linux LTS) — ap-south-1 region for low-latency Indian traffic</td></tr>
+        <tr><td><strong>Process Manager</strong></td><td><strong>PM2 in Cluster Mode</strong> — runs 1 Node worker per CPU core, 500MB memory limit per worker, auto-restart on crash, zero-downtime reloads, load-balanced across workers, integrated log aggregation</td></tr>
+        <tr><td><strong>Reverse Proxy</strong></td><td><strong>Nginx</strong> — HTTPS / SSL termination, HTTP→HTTPS redirect, gzip compression, static asset caching, request buffering, WebSocket upgrade handling for Socket.IO, proxy_pass to PM2 cluster</td></tr>
+        <tr><td><strong>CI/CD Pipeline</strong></td><td><strong>GitHub Actions</strong> — automated lint → test → build → deploy on push to <code>main</code>, SSH-based zero-downtime deployment, env-var secret management, rollback support</td></tr>
+        <tr><td><strong>Database</strong></td><td><strong>PostgreSQL 16</strong> + Prisma ORM — versioned schema migrations, connection pooling (PgBouncer-ready), transaction-safe financial writes, indexed queries for sub-100ms reads on ride/user tables</td></tr>
+        <tr><td><strong>Cache & Real-Time</strong></td><td><strong>Redis 7</strong> — geospatial indexing (GEOADD/GEORADIUS) for driver discovery, pub/sub adapter for multi-worker Socket.IO, distributed rate limiting across PM2 workers, ETA cache, session store</td></tr>
+        <tr><td><strong>File Storage</strong></td><td>AWS S3 (ap-south-1) — pre-signed upload URLs, bucket-policy-based access control, lifecycle rules, KYC document retention</td></tr>
+        <tr><td><strong>Security Stack</strong></td><td><strong>JWT RS256</strong> (asymmetric key signing), Helmet.js (CSP, HSTS, X-Frame-Options), bcrypt password hashing, Redis-backed rate limiting (API 100/15min, Auth 20/min, Location 120/min), CORS whitelist, SQL injection protection via Prisma</td></tr>
+        <tr><td><strong>Monitoring & Logging</strong></td><td>PM2 process monitor + Winston daily-rotated log files + structured JSON logs, centralised error middleware, audit log table for admin actions</td></tr>
       </tbody>
     </table>
   </div>
@@ -815,19 +850,19 @@
   <!-- SECTION 7: COST BREAKDOWN -->
   <div class="section-head">
     <span class="num">07</span>
-    <h3>Cost Estimation — Startup Pricing</h3>
+    <h3>Cost Estimation — Custom Build Pricing</h3>
     <div class="line"></div>
   </div>
 
   <div class="justify-box" style="margin-bottom:14px;">
-    <h4>📍 Regional Startup Pricing Rationale</h4>
-    <p>This quotation applies startup-friendly rates suitable for an initial launch in a limited geographic area (Nellore District, AP). All features remain fully intact as per the developed codebase. Pricing reflects the deployment, customisation, configuration, testing, and delivery of the complete production-ready platform — not a reduced-scope build.</p>
+    <h4>📍 Custom Development Engagement</h4>
+    <p>This quotation covers a <strong>complete ground-up build</strong> of the Yuva Ride platform — engineered, developed, tested, and deployed from scratch using a modern, production-grade technology stack (Express.js, Next.js, a cross-platform mobile framework, PostgreSQL, Redis, Socket.IO, AWS, PM2, Nginx). All 4 applications (Backend, Admin, Driver App, Customer App) are built as independent, scalable systems suitable for high-concurrency ride-hailing operations. Pricing reflects full engineering effort — architecture design, implementation, integration, security hardening, performance testing, and production launch — for an initial regional rollout.</p>
   </div>
 
   <div class="cost-grid">
     <div class="cost-card">
       <div class="cc-label">Backend API Server</div>
-      <div class="cc-amount">₹4,90,000</div>
+      <div class="cc-amount">₹5,28,000</div>
       <div class="cc-range">1,800–2,200 hrs · 90 tables · 67 modules</div>
       <div class="cc-sub">Core ride engine, financial system, real-time engine, RBAC, cron jobs, security</div>
     </div>
@@ -839,36 +874,22 @@
     </div>
     <div class="cost-card">
       <div class="cc-label">Driver App (Android + iOS)</div>
-      <div class="cc-amount">₹3,80,000</div>
+      <div class="cc-amount">₹3,99,000</div>
       <div class="cc-range">1,600–2,000 hrs · 238 files · 59+ screens</div>
       <div class="cc-sub">Dual module (Captain + Carpool), navigation, KYC, earnings, training, referral</div>
     </div>
     <div class="cost-card">
       <div class="cc-label">Customer App (Android + iOS)</div>
-      <div class="cc-amount">₹3,20,000</div>
+      <div class="cc-amount">₹3,43,000</div>
       <div class="cc-range">1,200–1,500 hrs · 176 files · 64 screens</div>
       <div class="cc-sub">Multi-service booking, real-time tracking, Razorpay, SOS, referral, PDF invoice</div>
     </div>
-  </div>
-
-  <!-- Integrations mini-table -->
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-top:12px;">
-    <table>
-      <thead><tr>
-        <th>Third-Party Integrations</th>
-        <th class="right">Amount (INR)</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>Google Maps API (Maps, Places, Distance Matrix, Navigation)</td><td class="right">₹32,000</td></tr>
-        <tr><td>Socket.IO + Redis (real-time engine, geospatial, pub/sub)</td><td class="right">₹30,000</td></tr>
-        <tr><td>Razorpay Payment Gateway (webhooks, order flow, verification)</td><td class="right">₹18,000</td></tr>
-        <tr><td>Firebase Cloud Messaging (dual projects, multi-language)</td><td class="right">₹12,000</td></tr>
-        <tr><td>AWS S3 (pre-signed URLs, bucket policies)</td><td class="right">₹8,000</td></tr>
-        <tr><td>Fast2SMS (DLT registration, OTP, bulk SMS)</td><td class="right">₹5,000</td></tr>
-        <tr><td>Email Service (SMTP, PDF invoices, templates)</td><td class="right">₹5,000</td></tr>
-        <tr class="total-row"><td><strong>Subtotal</strong></td><td class="right"><strong>₹1,10,000</strong></td></tr>
-      </tbody>
-    </table>
+    <div class="cost-card">
+      <div class="cc-label">Figma Design (UI/UX)</div>
+      <div class="cc-amount">₹30,000</div>
+      <div class="cc-range">Figma · Design System · 4 Products</div>
+      <div class="cc-sub">Wireframes, high-fidelity screens, icon set, brand alignment, component library, usability pass</div>
+    </div>
   </div>
 
   <!-- Infrastructure mini-table -->
@@ -921,11 +942,11 @@
         <th class="right">Amount (INR)</th>
       </tr></thead>
       <tbody>
-        <tr><td><strong>Backend API Server (Express.js)</strong></td><td class="right">₹4,90,000</td></tr>
+        <tr><td><strong>Backend API Server (Express.js)</strong></td><td class="right">₹5,28,000</td></tr>
         <tr><td><strong>Admin Dashboard (Next.js · 62 pages)</strong></td><td class="right">₹1,20,000</td></tr>
-        <tr><td><strong>Driver App (Android & iOS)</strong></td><td class="right">₹3,80,000</td></tr>
-        <tr><td><strong>Customer App (Android & iOS)</strong></td><td class="right">₹3,20,000</td></tr>
-        <tr><td><strong>Third-Party Integrations</strong></td><td class="right">₹1,10,000</td></tr>
+        <tr><td><strong>Driver App (Android & iOS)</strong></td><td class="right">₹3,99,000</td></tr>
+        <tr><td><strong>Customer App (Android & iOS)</strong></td><td class="right">₹3,43,000</td></tr>
+        <tr><td><strong>Figma Design (UI/UX)</strong></td><td class="right">₹30,000</td></tr>
         <tr><td><strong>Infrastructure & DevOps</strong></td><td class="right">₹30,000</td></tr>
         <tr><td><strong>Testing & QA</strong></td><td class="right">₹50,000</td></tr>
         <tr class="total-row">
@@ -945,8 +966,101 @@
     </div>
   </div>
    
-  <!-- SECTION 9: TIMELINE -->
-  
+  <!-- SECTION 9: PROJECT TERMS & DELIVERABLES -->
+  <div class="section-head" style="margin-top:36px;">
+    <span class="num">09</span>
+    <h3>Project Terms & Deliverables</h3>
+    <div class="line"></div>
+  </div>
+
+  <!-- TIMELINE & PAYMENT -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+
+    <!-- TIMELINE CARD -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius-lg);padding:20px 22px;">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Delivery Timeline</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:12px;">14 – 16 Weeks</div>
+      <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.7;">
+        <strong style="color:var(--ink);">Week 1–2:</strong> Figma design, schema finalization, kick-off<br>
+        <strong style="color:var(--ink);">Week 3–8:</strong> Backend API + Admin Dashboard<br>
+        <strong style="color:var(--ink);">Week 9–13:</strong> Driver App + Customer App<br>
+        <strong style="color:var(--ink);">Week 14–15:</strong> Integration testing + bug fixes<br>
+        <strong style="color:var(--ink);">Week 16:</strong> App Store submission, deployment, go-live
+      </div>
+    </div>
+
+    <!-- PAYMENT CARD -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:var(--radius-lg);padding:20px 22px;">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;">Payment to Begin</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:12px;">₹2,00,000 Advance</div>
+      <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.7;">
+        A one-time advance of <strong style="color:var(--ink);">₹2,00,000</strong> confirms the project and starts the engagement (Figma design, schema finalization, architecture setup, kick-off call).<br><br>
+        <strong style="color:var(--ink);">Remaining ₹13,00,000:</strong> Payment schedule for the balance will be mutually agreed and documented in the signed Service Agreement, tied to delivery milestones.
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div style="background:var(--green-light);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:14px;">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">✓ Included in the ₹15 Lakh Quote</div>
+    <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:12px;">What You Receive</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:13px;color:var(--ink-soft);line-height:1.6;">
+      <div><strong style="color:var(--ink);">✓ 60-day post-launch warranty</strong> — free bug fixes on delivered scope</div>
+      <div><strong style="color:var(--ink);">✓ App Store + Play Store submission</strong> — both apps, including rejection handling</div>
+      <div><strong style="color:var(--ink);">✓ Production deployment & go-live</strong> — AWS setup, DNS, SSL, domain configuration</div>
+      <div><strong style="color:var(--ink);">✓ Two training sessions</strong> — admin/ops team walkthrough (2 hrs each, online)</div>
+      <div><strong style="color:var(--ink);">✓ Full source code handover</strong> — private GitHub repo, all credentials, database backup</div>
+      <div><strong style="color:var(--ink);">✓ Project documentation</strong> — API reference (Postman), admin user manual, deployment runbook</div>
+    </div>
+  </div>
+ 
+  <!-- WHAT'S NOT INCLUDED -->
+  <div style="background:var(--red-light);border:1px solid var(--border);border-left:4px solid #c44;border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:14px;">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:#c44;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">✗ Not Included (Client's Responsibility)</div>
+    <h4 style="font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:12px;">Separate / Additional Costs</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:13px;color:var(--ink-soft);line-height:1.6;">
+
+      <!-- <div><strong style="color:var(--ink);">Apple Developer account</strong> — ~₹8,000/year (paid directly to Apple)</div> -->
+   
+<div><strong style="color:var(--ink);">Apple Developer account</strong> — ~₹8,000/year (optional · required only if iOS launch is needed · can be decided later)</div> 
+
+      <div><strong style="color:var(--ink);">Google Play Developer account</strong> — ~₹2,000 one-time (paid to Google)</div>
+      <div><strong style="color:var(--ink);">AWS hosting (monthly)</strong> — ~₹1,000 – ₹8,000/month based on usage</div>
+      <div><strong style="color:var(--ink);">Google Maps API usage</strong> — ~₹500 – ₹3,000/month based on ride volume</div>
+      <div><strong style="color:var(--ink);">Razorpay transaction fees</strong> — ~2% per transaction (platform fee)</div>
+      <div><strong style="color:var(--ink);">Fast2SMS (OTP)</strong> — ~₹0.15 per SMS + DLT registration fee</div>
+      <div><strong style="color:var(--ink);">Marketing website / landing page</strong> — not part of this scope</div>
+      <div><strong style="color:var(--ink);">Logo / brand identity design</strong> — not part of this scope</div>
+      <div><strong style="color:var(--ink);">Driver recruitment / onboarding ops</strong> — not part of this scope</div>
+      <div><strong style="color:var(--ink);">Custom scope changes after kick-off</strong> — billed at ₹1,500/hour</div>
+    </div>
+  </div>
+
+  <!-- AMC UPSELL -->
+  <!-- <div style="background:var(--accent);color:#fff;border-radius:var(--radius-lg);padding:24px 28px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:280px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;opacity:0.7;margin-bottom:6px;">Optional — After 60-day Warranty</div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;">Annual Maintenance Contract (AMC)</h4>
+        <div style="font-size:13px;opacity:0.9;line-height:1.6;">
+          Bug fixes, minor enhancements, server monitoring, 4 hours/month dedicated support, priority response SLA. Keeps your platform stable as it scales.
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;">₹1,80,000</div>
+        <div style="font-size:12px;opacity:0.7;">per year (optional)</div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- HANDOVER & OWNERSHIP -->
+  <div class="justify-box" style="margin-bottom:8px;">
+    <h4>🤝 Handover, Ownership & Support Terms</h4>
+    <p style="margin-bottom:8px;"><strong>Code Ownership:</strong> On receipt of final payment, the client receives 100% ownership of the source code (Backend, Admin, Driver App, Customer App), all third-party account credentials, database backups, and full deployment access. No vendor lock-in.</p>
+    <p style="margin-bottom:8px;"><strong>Support Windows:</strong> Project delivery team available Monday–Saturday, 10 AM – 7 PM IST during active build. Critical production issues during warranty: response within 4 working hours.</p>
+    <p style="margin-bottom:8px;"><strong>Quotation Validity:</strong> This quotation is valid for 30 days from the date of issue. Pricing may change thereafter based on revised scope or market rates.</p>
+    <p><strong>Communication:</strong> Weekly progress calls, shared project tracker (Notion / ClickUp), and a dedicated WhatsApp group for real-time coordination.</p>
+  </div>
 
   <!-- FOOTER -->
   <div class="footer">
@@ -961,3 +1075,4 @@
 </div>
 </body>
 </html>
+  
